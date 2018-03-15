@@ -1,17 +1,18 @@
 from flask import Flask
 from crawl import get_jobs
+from flasgger import Swagger
 
 app = Flask(__name__)
-get_job = get_jobs
+swagger = Swagger(app)
 
 
 @app.route('/api/v1/job/<palavra_chave>')
-def get_jobs(palavra_chave):
+def jobs(palavra_chave):
     palavra = palavra_chave.replace(' ', '+')
     palavra = palavra_chave.replace(',', '+')
     palavra.lower()
     print(palavra)
-    return get_job(palavra)
+    return get_jobs(palavra)
 
 
 if __name__ == '__main__':
