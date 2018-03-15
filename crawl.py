@@ -3,11 +3,12 @@ import requests
 from flask import jsonify
 from difflib import SequenceMatcher
 
-url_base = 'https://www.chances.com.br/chances/oportunidades/'
+url_base = 'https://www.chances.com.br'
+busca = '/chances/oportunidades/'
 
 
 def get_jobs(palavra):
-    req = requests.get(url_base + palavra)
+    req = requests.get(url_base + busca + palavra)
     soup = BeautifulSoup(req.text, 'html.parser')
     vagas = soup.find_all('section', class_='oportunidade')
     oportunidades = []
