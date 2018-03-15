@@ -14,7 +14,7 @@ def get_jobs(palavra):
 
     for vaga in vagas:
         print(palavra + ' ' + vaga.find('h1').get_text() + ' = ' + str(similar(palavra, vaga.find('h1').get_text())*10))
-        if similar(palavra, vaga.find('h1').get_text()) * 10 > 5:
+        if similar(palavra, vaga.find('h1').get_text().strip(' ')) * 10 > 5:
             oportunidades.append({'titulo': vaga.find('h1').get_text(), 'localidade': vaga.find('localidade').get_text(),
                               'url': url_base + vaga.find('a', class_='btn-default').get('href')})
 
