@@ -1,9 +1,7 @@
 from flask import Flask
 from crawl import get_jobs
-from flasgger import Swagger
 
 app = Flask(__name__)
-swagger = Swagger(app)
 
 
 @app.route('/api/v1/job/<palavra_chave>')
